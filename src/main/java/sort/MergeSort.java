@@ -3,6 +3,11 @@ package sort;
 public class MergeSort<E> {
 
     public <E extends Comparable<E>> void mergeSort(E[] arr, int left, int right) {
+
+        if(arr == null || arr.length == 0){
+            throw new IllegalArgumentException();
+        }
+
         if (left < right) {
             int middle = (left + right) / 2;
             mergeSort(arr, left, middle);

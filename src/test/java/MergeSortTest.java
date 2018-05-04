@@ -3,6 +3,7 @@ import org.junit.Test;
 import sort.MergeSort;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -48,4 +49,15 @@ public class MergeSortTest {
         assertArrayEquals(expectedArray, actualArray);
     }
 
+    @Test(expected = java.lang.IllegalArgumentException.class)
+    public void sortArrayWithNull() {
+        mergeSort.mergeSort(null, 0, 0);
+    }
+
+    @Test(expected = java.lang.ClassCastException.class)
+    public void sortArrayWithNotComparableObjects() {
+        Object[] actualArray =  new Object[]{new Integer(3), "as", new Scanner(System.in)};
+
+        mergeSort.mergeSort((Comparable[]) actualArray, 0, actualArray.length - 1);
+    }
 }
